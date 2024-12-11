@@ -67,7 +67,7 @@
         }
     </style>
 </head>
-<body onclick="changeImage()" id="body">
+<body onclick="handleClick()" id="body">
     <div class="full-screen">
         <img src="img/background1.png"/>
     </div>
@@ -79,6 +79,8 @@
     </div>
 
     <script>
+        var imageChanged = false; 
+
         function changeImage() {
             var imageElement = document.getElementById("headlineImage");
             var overlayElement = document.getElementById("overlay");
@@ -89,7 +91,16 @@
                 imageElement.src = "img/jieshao.png";
                 imageElement.style.opacity = '1';
                 overlayElement.style.display = "block";
+                imageChanged = true;
             }, 1500);
+        }
+
+        function handleClick() {
+            if (!imageChanged) {
+                changeImage();
+            } else {
+                window.location.href = "https://baidu.com";
+            }
         }
     </script>
 </body>
